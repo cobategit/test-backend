@@ -1,4 +1,4 @@
-https://sequelize.org/docs/v6/other-topics/migrations/#installing-the-cli
+https://sequelize.org/docs/v6/
 https://www.npmjs.com/package/sequelize-typescript
 https://www.postgresql.org/docs/13/index.html
-https://www.npmjs.com/package/multer
+https://expressjs.com/en/4x/api.html

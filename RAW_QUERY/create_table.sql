@@ -52,6 +52,7 @@ create table employee_profile(
 id serial primary key,
 employee_id int references employee(id),
 place_of_birth varchar(200) null,
+gender GENDER_PROFILE,
 date_of_birth date null,
 is_married boolean,
 prof_pict varchar(200),
