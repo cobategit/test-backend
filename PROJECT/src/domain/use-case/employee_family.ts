@@ -60,6 +60,18 @@ export class CreateEmployeeFamilyUseCase implements ICreateEmployeeFamilyUseCase
     async execute(data: EmployeeFamilyE): Promise<MEmployeeFamilyE> {
         data.created_at = new Date()
         data.updated_at = new Date()
+
+        const mapWhere: Map<string, any> = new Map<string, any>()
+
+        mapWhere.set('where', {
+            identifier: data.identifier
+        })
+
+        const existidentifier = await this.employeeRepo.findOne(mapWhere)
+        if (existidentifier) {
+            throw new Error(`Identifier ${data.identifier} sudah ada`)
+        }
+
         const res: MEmployeeFamilyE = await this.employeeRepo.create(data)
 
         return res
