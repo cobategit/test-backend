@@ -11,16 +11,17 @@ import { EmployeeProfileE, Gender } from "../../../domain";
 import MEmployee from "./employee";
 
 @Table({
-    tableName: "tb_employee_profile",
+    tableName: "employee_profile",
     timestamps: false,
     underscored: true,
-    createdAt: "create_at",
-    updatedAt: "update_at",
+    createdAt: "created_at",
+    updatedAt: "updated_at",
 })
 export default class MEmployeeProfileE extends Model<EmployeeProfileE> implements EmployeeProfileE {
     @Column({
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataType.BIGINT,
     })
     id?: number;
@@ -46,7 +47,7 @@ export default class MEmployeeProfileE extends Model<EmployeeProfileE> implement
 
     @Column({
         allowNull: true,
-        type: DataType.STRING,
+        type: DataType.ENUM('Laki-Laki','Perempuan'),
     })
     gender?: Gender | undefined;
 

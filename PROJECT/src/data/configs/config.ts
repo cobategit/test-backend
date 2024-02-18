@@ -22,7 +22,7 @@ export default {
             "orm_driver": process.env.DB_ORM_DRIVER ?? 'sequelize',
             "enable": true,
             "path": [
-                path.join(__dirname, "../model/pg"),
+                path.join(__dirname, "../models/pg"),
             ],
             "total_slave": process.env.DB_MAIN_TOTAL_SLAVE ?? 0,
             "db_key": process.env.DB_MAIN_KEY ?? ''

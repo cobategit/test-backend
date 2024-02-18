@@ -11,7 +11,7 @@ import { EmployeeEducationE, Level } from "../../../domain";
 import MEmployee from "./employee";
 
 @Table({
-    tableName: "tb_employee_profile",
+    tableName: "employee_education",
     timestamps: false,
     underscored: true,
     createdAt: "create_at",
@@ -21,6 +21,7 @@ export default class MEmployeeEducationE extends Model<EmployeeEducationE> imple
     @Column({
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataType.BIGINT,
     })
     id?: number;

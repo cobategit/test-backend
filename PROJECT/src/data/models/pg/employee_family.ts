@@ -11,7 +11,7 @@ import { EmployeeFamilyE, RelationStatus, Religion } from "../../../domain";
 import MEmployee from "./employee";
 
 @Table({
-    tableName: "tb_employee_profile",
+    tableName: "employee_family",
     timestamps: false,
     underscored: true,
     createdAt: "create_at",
@@ -21,6 +21,7 @@ export default class MEmployeeFamilyE extends Model<EmployeeFamilyE> implements 
     @Column({
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataType.BIGINT,
     })
     id?: number;
@@ -31,6 +32,12 @@ export default class MEmployeeFamilyE extends Model<EmployeeFamilyE> implements 
         type: DataType.BIGINT,
     })
     employee_id?: number | undefined;
+
+    @Column({
+        allowNull: true,
+        type: DataType.STRING(200),
+    })
+    name?: string | undefined;
 
     @Column({
         allowNull: true,

@@ -13,16 +13,17 @@ import MEmployeeFamilyE from "./employee_family";
 import MEmployeeEducationE from "./employee_education";
 
 @Table({
-    tableName: "tb_employee",
+    tableName: "employee",
     timestamps: false,
     underscored: true,
-    createdAt: "create_at",
-    updatedAt: "update_at",
+    createdAt: "created_at",
+    updatedAt: "updated_at",
 })
 export default class MEmployee extends Model<EmployeeE> implements EmployeeE {
     @Column({
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataType.BIGINT,
     })
     id?: number;

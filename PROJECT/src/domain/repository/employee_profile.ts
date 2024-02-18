@@ -1,6 +1,6 @@
 import MEmployeeProfileE from "../../data/models/pg/employee_profile";
 import { EmployeeProfileE } from "../entity";
-import { PaginationE, ResponseDataE } from "../entity/global";
+import { ResponseDataE } from "../entity/global";
 import { IEmployeeProfileRepo } from "../interfaces";
 
 export class EmployeeProfileRepo implements IEmployeeProfileRepo {
@@ -9,11 +9,11 @@ export class EmployeeProfileRepo implements IEmployeeProfileRepo {
 
         return result
     }
-    async findAll(wheres?: Map<string, any> | undefined, paginate?: PaginationE | undefined): Promise<Pick<ResponseDataE<MEmployeeProfileE[]>, "rows" | "count">> {
+    async findAll(wheres?: Map<string, any> | undefined, limit?: number, offset?: number): Promise<Pick<ResponseDataE<MEmployeeProfileE[]>, "rows" | "count">> {
         const result = await MEmployeeProfileE.findAndCountAll({
             where: wheres!.get('where'),
-            limit: paginate?.per_page,
-            offset: paginate?.page,
+            limit: limit,
+            offset: offset,
             order: [['created_at', 'ASC']],
             logging: console.log
         })

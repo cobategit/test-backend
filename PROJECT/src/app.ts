@@ -9,6 +9,7 @@ import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express';
 import SwaggerOption from './swagger'
 import { Api, AppLoggerV1 } from './external'
+import routes from './presentation/routes'
 
 (async () => {
     dotenv.config()
@@ -43,7 +44,7 @@ import { Api, AppLoggerV1 } from './external'
     router.use(cors())
     router.use(express.json())
 
-    // router.use('/api', routes);
+    router.use('/api', routes);
 
     router.all('*', (request: Request, response: Response, next: NextFunction) => {
         response.status(404)
@@ -68,20 +69,4 @@ import { Api, AppLoggerV1 } from './external'
     const server = router.listen(process.env.SERVER_PORT, () =>
         console.log(`server running on port ${process.env.SERVER_PORT}`)
     )
-
-    process.on('unhandledRejection', (err) => {
-        console.log('UNHANDLED REJECTION !! Mematikan server...')
-        console.log(err)
-        server.close(() => {
-            process.exit(1)
-        })
-    })
-
-    process.on('uncaughtException', (err) => {
-        console.log('UNHANDLED REJECTION !! Mematikan server...')
-        console.log(err)
-        server.close(() => {
-            process.exit(1)
-        })
-    })
 })()
